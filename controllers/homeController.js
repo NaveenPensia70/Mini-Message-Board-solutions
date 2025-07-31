@@ -1,5 +1,4 @@
-const homePage= (req,res)=>{
-  const messages = [
+ const messages = [
   {
     text: "Hi there!",
     user: "Amando",
@@ -11,7 +10,18 @@ const homePage= (req,res)=>{
     added: new Date()
   }
 ];
+const homePage= (req,res)=>{
+ 
   res.render("index",{messages});
 }
+const handleSubmit= (req,res)=>{
+  const {userName,message}=req.body;
+  messages.push({
+    text: message,
+    user: userName,
+    added: new Date()
+  });
+  res.redirect("/");
+}
 
-export default homePage;
+export  {homePage,handleSubmit};
